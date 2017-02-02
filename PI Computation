@@ -1,0 +1,49 @@
+
+#include "stdafx.h"
+#include <iostream>
+#include <iomanip> // to set precision
+#include <cmath> // to use math functions
+using namespace std;
+
+
+int _tmain(int argc, _TCHAR* argv[])
+{
+	// creates variables and names
+	int terms,count;
+	double PI, numerator, denominator, fractions;
+	double real_PI = 3.14159265358979;
+
+	//sets the variables to equal values
+	PI = 0;
+	numerator = 4;
+	denominator = 1;
+	
+	// ask user for how many terms
+	cout << "How many terms do you want to compute PI?: ";
+	cin >> terms;
+
+	// computes until reaches entered term
+	for (count = 1; count <= terms; count++)
+	{
+		fractions = numerator / denominator;
+		
+		if (count % 2)// for odd fractions, add terms
+		{
+			PI += fractions;
+		}
+		else// for even terms, subtract
+		{
+			PI -= fractions;
+		}
+		denominator = denominator + 2;// increase denominator after each loop
+	}
+		
+	// sets precision and outputs real PI, computed PI, and the difference between them
+	cout << setiosflags(ios::fixed) << setiosflags(ios::showpoint);
+	cout << "The value of the real PI is: " << setprecision(10) << real_PI << endl;
+	cout << "Computed PI: " << setprecision(10) << PI << endl;
+	cout << "The diference: " << setprecision(10) << fabs(PI - real_PI) << endl;
+	return 0;
+}
+
+
